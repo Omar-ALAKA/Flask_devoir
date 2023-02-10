@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Accueil utilisateur</title>
+        <!-- Inclusion des feuilles de style Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Inclusion de la feuille de style personnalisée -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container-fluid bg-dark text-white text-center py-5">
+            <h1>Bienvenue sur la page d'accueil</h1>
+            <p>Ceci est la page d'accueil de votre site web dédié à la cybersécurité</p>
+        </div>
+        <div class="container text-center mt-5">
+            {% if current_user.is_authenticated %}
+                <h2 class="mb-5">Bonjour {{ current_user.username }}</h2>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-danger mb-5">Déconnexion</a>
+            {% else %}
+                <h2 class="mb-5">Vous n'êtes pas connecté</h2>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-primary mb-3">Connexion</a>
+                <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">Inscription</a>
+            {% endif %}
+        </div>
+        <!-- Inclusion des scripts Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
